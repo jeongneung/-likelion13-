@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const TodoListItem = ({ todo, onToggle, onRemove }) => {
@@ -29,17 +28,21 @@ const Item = styled.div`
   background: white;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
+  height: 48px;
+  overflow: hidden;
 `;
 
 const Text = styled.span`
   margin-left: 0.5rem;
+  color: #333333;
   text-decoration: ${({ checked }) => (checked ? "line-through" : "none")};
 `;
 
 const DeleteButton = styled.button`
-  background: red;
+  background: #b00020;
   color: white;
   border: none;
   padding: 0.3rem 0.8rem;
   border-radius: 0.5rem;
+  margin-left: 1rem;
 `;

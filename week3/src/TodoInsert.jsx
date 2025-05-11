@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const TodoInsert = ({ onInsert }) => {
@@ -40,7 +40,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background: green;
+  background: #006400;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
