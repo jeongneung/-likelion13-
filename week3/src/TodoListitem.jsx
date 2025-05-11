@@ -36,8 +36,13 @@ const Text = styled.span`
   margin-left: 0.5rem;
   color: #333333;
   text-decoration: ${({ checked }) => (checked ? "line-through" : "none")};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 150px;
+  max-width: 150px;
+  display: inline-block;
 `;
-
 const DeleteButton = styled.button`
   background: #b00020;
   color: white;
