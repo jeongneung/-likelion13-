@@ -9,10 +9,10 @@ function RootLayout() {
     <Layout>
       <Navbar />
       <Content>
-        <Input/>
+        <Input />
         <Outlet />
-        <Footer />
       </Content>
+      <Footer />
     </Layout>
   );
 }
