@@ -6,11 +6,12 @@ import Profile from "../components/Profile";
 
 function MyLayout() {
   const name = localStorage.getItem("name") || "이정능";
+ const hideProfile=location.pathname === "/account/edit-name";
   return (
     <Layout>
       <Navbar />
       <Content>
-        <Profile name={name} />
+        {!hideProfile && <Profile name={name} />}
         <Outlet />
       </Content>
       <Footer />

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import App from "./App";
 import Search from "./pages/Search";
 import RootLayout from "./layouts/RootLayout";
-import MyLayout from "./pages/MyLayout";
+import MyLayout from "./layouts/MyLayout";
 import EditName from "./pages/EditName";
 
 const root = document.getElementById("root");

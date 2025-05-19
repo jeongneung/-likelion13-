@@ -17,7 +17,6 @@ function EditName() {
 
   return (
     <Layout>
-      <Navbar />
       <Content>
         <h1>이름 수정</h1>
         <input
@@ -28,7 +27,6 @@ function EditName() {
         />
         <button onClick={handleSave}>저장</button>
       </Content>
-      <Footer />
     </Layout>
   );
 }
