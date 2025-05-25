@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/header/Header";
 
-// 이미지들 import (파일명은 예시로 작성했어요)
 import proj1 from "../assets/images/project1.png";
 import proj2 from "../assets/images/project2.png";
 import proj3 from "../assets/images/project3.png";
@@ -10,6 +10,7 @@ import proj5 from "../assets/images/project5.png";
 import proj6 from "../assets/images/project6.png";
 import proj7 from "../assets/images/project7.png";
 import proj8 from "../assets/images/project8.png";
+import point2 from "../assets/images/point2.png";
 
 const projects = [
   { title: "달력일기", image: proj1 },
@@ -23,19 +24,24 @@ const projects = [
 ];
 
 export default function ProjectPage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Header />
       <Container>
-        <Title>🌸 Project</Title>
+        <Title>
+          <Img src={point2} alt="포인트2" />
+          Project
+        </Title>
         <Description>
-          2025 서경대학교 아이디어톤 프로젝트 파일입니다.클릭하여 상세한 정보를 확인하세요!<br />
-          모아 놓으니 더 에쁘네요. 다들 너무 수고하셨습니다!
+          2025 서경대학교 아이디어톤 프로젝트 파일입니다. 클릭하여 상세한 정보를 확인하세요!<br />
+          모아 놓으니 더 예쁘네요. 다들 너무 수고하셨습니다!
         </Description>
 
         <Grid>
           {projects.map((project, index) => (
-            <ProjectCard key={index}>
+            <ProjectCard key={index} onClick={() => navigate(`/project/${index}`)}>
               <ProjectImage src={project.image} alt={project.title} />
             </ProjectCard>
           ))}
@@ -54,6 +60,14 @@ const Title = styled.h1`
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+`;
+
+const Img = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
 `;
 
 const Description = styled.p`
@@ -72,6 +86,13 @@ const ProjectCard = styled.div`
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const ProjectImage = styled.img`
