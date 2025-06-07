@@ -26,8 +26,7 @@ export default function ProductForm({ onAdd }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/shoes`, formData);
-
+      await axios.post(`${import.meta.env.VITE_API_URL}/shoes`, formData);
       alert("상품 등록 완료!");
       if (onAdd) onAdd();
     } catch (err) {
@@ -39,24 +38,48 @@ export default function ProductForm({ onAdd }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h3>상품 등록</h3>
-      <label>이름: <input name="name" value={formData.name} onChange={handleChange} required /></label>
-      <label>가격: <input name="price" type="number" value={formData.price} onChange={handleChange} required /></label>
-      <label>이미지 URL: <input name="image" value={formData.image} onChange={handleChange} required /></label>
-      <label>평점: <input name="rating" type="number" step="0.1" value={formData.rating} onChange={handleChange} /></label>
-      <label>리뷰 수: <input name="reviews" type="number" value={formData.reviews} onChange={handleChange} /></label>
-      <label>색상: <input name="color" value={formData.color} onChange={handleChange} /></label>
-      <label>사이즈: <input name="size" value={formData.size} onChange={handleChange} /></label>
-      <label>성별:
+
+      {[
+        { label: "이름", name: "name" },
+        { label: "가격", name: "price", type: "number" },
+        { label: "이미지 URL", name: "image" },
+        { label: "평점", name: "rating", type: "number", step: "0.1" },
+        { label: "리뷰 수", name: "reviews", type: "number" },
+        { label: "색상", name: "color" },
+        { label: "사이즈", name: "size" },
+      ].map(({ label, name, type = "text", step }) => (
+        <label key={name}>
+          {label}:{" "}
+          <input
+            name={name}
+            type={type}
+            step={step}
+            value={formData[name]}
+            onChange={handleChange}
+            required={["name", "price", "image"].includes(name)}
+          />
+        </label>
+      ))}
+
+      <label>
+        성별:
         <select name="gender" value={formData.gender} onChange={handleChange}>
           <option value="unisex">Unisex</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
       </label>
+
       <label>
         품절:
-        <input type="checkbox" name="soldout" checked={formData.soldout} onChange={handleChange} />
+        <input
+          type="checkbox"
+          name="soldout"
+          checked={formData.soldout}
+          onChange={handleChange}
+        />
       </label>
+
       <button type="submit">등록하기</button>
     </Form>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function ProductCard({ id, name, price, image, rating, color, soldout, onDelete, onEdit }) {
+export default function ProductCard({ id, name, price, image, color, soldout, onDelete, onEdit }) {
   return (
     <Card>
       <ProductImage src={image} alt={name} />
